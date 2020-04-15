@@ -1,0 +1,33 @@
+{% extends 'layout.html' %} {% block HeroSection%}
+<h1 class="text-center">All Records</h1>
+<a href="/index" class="btn btn-info float-left">Add Record</a>
+<br>
+<br>
+<dic class="container">
+  <div class="table-responsive">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for n in records %}
+        <tr>
+          <td>{{n["fullName"]}}</td>
+          <td>{{n["email"]}}</td>
+          <td>{{n['phoneNumber']}}</td>
+          <td>
+            <a href="/edit/{{n['_id']}}" class="btn btn-warning">Edit</a>
+            <a href="/delete/{{n['_id']}}" class="btn btn-danger">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</dic>
+{% endblock%}

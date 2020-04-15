@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% block HeroSection%} 
+<div class="container">
+    <h1 class="display-4 text-center">Flask & MongoDB</h1>
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center ">Insert Data</h1> 
+            <form action="" method="post" autocomplete="off" novalidate>
+                {{ form.csrf_token }} 
+                {{ form.hidden_tag() }}
+                <div class="justify-content-center">
+                  <div class="col-9-lg col-sm-12">
+                    <fieldset class="form-group">
+                        <div class="form-group">
+                            {{ form.fullName.label(class="form-control-label")}}
+                            {% if form.fullName.errors %}
+                              {{ form.fullName(class="form-control is-invalid")}}
+                              <div class="invalid-feedback">
+                                {% for error in form.fullName.errors %}
+                                  <span>{{ error }}</span>
+                                {% endfor%}
+                              </div>
+                            {% else %}
+                              {{ form.fullName(class="form-control")}}                                
+                            {% endif %} 
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.label(class="form-control-label")}}
+                            {% if form.email.errors %}
+                              {{ form.email(class="form-control is-invalid")}}
+                              <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                  <span>{{ error }}</span>
+                                {% endfor%}
+                              </div>
+                            {% else %}
+                              {{ form.email(class="form-control")}}                                
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.phoneNumber.label(class="form-control-label")}}
+                            {% if form.phoneNumber.errors %}
+                              {{ form.phoneNumber(class="form-control is-invalid")}}
+                              <div class="invalid-feedback">
+                                {% for error in form.phoneNumber.errors %}
+                                  <span>{{ error }}</span>
+                                {% endfor%}
+                              </div>
+                            {% else %}
+                              {{ form.phoneNumber(class="form-control")}}                                
+                            {% endif %}
+                        </div>  
+                    </fieldset>
+                    <div class="form-group">
+                      {{form.submit(class="btn btn-primary  btn-lg btn-block")}}
+                    </div>
+                  </div>
+                </div>
+              </form>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <a href="/view" class="btn btn-info btn-lg btn-block">View Records</a>
+        </div>
+    </div>
+</div>
+{% endblock%}
